@@ -6,12 +6,17 @@ import StatsSection from '../components/statsSection/StatsSection';
 import MarketplaceListings from '../components/marketplacelistings/MarketplaceListings';
 import Footer from '../components/footer/Footer';
 import MidSection from '../components/midsection/MidSection';
+import MetalPrices from '../components/metalPrices/metalPrices';
+import './home.css';
 const Home = () => (
   <>
     <Header />
     <MidSection />
     <ProcessSection />
-    <PricingSection />
+    <div className="side-by-side-container">
+      <PricingSection />
+      <MetalPrices />
+    </div>
     <StatsSection />
     <MarketplaceListings />
     <Footer />
