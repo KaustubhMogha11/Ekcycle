@@ -1,0 +1,5 @@
+.side-by-side-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}

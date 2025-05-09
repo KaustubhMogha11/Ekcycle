@@ -6,6 +6,7 @@
     max-width: 600px;           /* Reduced width */
     margin: 2rem auto;          /* Center horizontally */
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+    flex: 0.5;
   }
   
   .section-title {
