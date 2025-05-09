@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../components/Header';
-import ProcessSection from '../components/ProcessSection';
-import PricingSection from '../components/PricingSection';
-import StatsSection from '../components/StatsSection';
-import MarketplaceListings from '../components/MarketplaceListings';
-import Footer from '../components/Footer';
+import ProcessSection from '../components/processsection/ProcessSection';
+import PricingSection from '../components/pricingsection/PricingSection';
+import StatsSection from '../components/statsSection/StatsSection';
+import MarketplaceListings from '../components/marketplacelistings/MarketplaceListings';
+import Footer from '../components/footer/Footer';
 import MidSection from '../components/midsection/MidSection';
 const Home = () => (
   <>

@@ -1,32 +1,44 @@
-.mid-section {
+.large-header {
     position: relative;
-    background-image: url('../../images/background1.jpeg');
+    width: 100%;
+    background: #333;
+    overflow: hidden;
+    background-image: url('https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/img/demo-1-bg.jpg');
     background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-position: center center;
+    z-index: 1;
   }
   
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* dark overlay for dulling image */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  #demo-canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
   }
   
-  .quote-container {
+  .main-title {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    color: #f9f1e9;
     text-align: center;
-    color: #fff;
-    padding: 0 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: 1;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   
-  .quote-text {
-    font-size: 2rem;
-    max-width: 800px;
+  .main-title .thin {
+    font-weight: 200;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .main-title {
+      font-size: 3em;
+    }
   }
   

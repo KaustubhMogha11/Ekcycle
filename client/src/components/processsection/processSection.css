@@ -1,0 +1,66 @@
+.process-section {
+    padding: 60px 20px;
+    background-color: #0d0d0d;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .process-heading {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00ffcc;
+  }
+  
+  .process-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .process-card {
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+    border: 1px solid rgba(0, 255, 204, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    width: 280px;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+  }
+  
+  .process-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+  }
+  
+  .process-icon {
+    font-size: 2.5rem;
+    color: #00ffcc;
+    margin-bottom: 15px;
+  }
+  
+  .process-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  .process-subtitle {
+    font-size: 0.95rem;
+    color: #cccccc;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .process-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .process-card {
+      width: 90%;
+    }
+  }
+  

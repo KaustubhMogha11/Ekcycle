@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import logo from '../images/logo.jpg'; // Update to correct file name and extension
+import logo from '../images/logo.jpg'; // Ensure path is correct
+import './Header.css'; // Add this if not already importing CSS
 
 const Header = () => {
   return (
