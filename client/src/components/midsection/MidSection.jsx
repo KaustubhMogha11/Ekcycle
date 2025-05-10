@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import './midsection.css';
 import { Circ } from 'gsap/all';
 import { TweenLite } from 'gsap';
+import { motion } from 'framer-motion';
+import logo from '../../images/logo.png';
 
 const MidSection = () => {
   useEffect(() => {
@@ -24,7 +26,6 @@ const MidSection = () => {
       canvas.height = height;
       ctx = canvas.getContext('2d');
 
-      // create points
       points = [];
       for (let x = 0; x < width; x += width / 20) {
         for (let y = 0; y < height; y += height / 20) {
@@ -35,7 +36,6 @@ const MidSection = () => {
         }
       }
 
-      // find 5 closest
       for (let i = 0; i < points.length; i++) {
         let closest = [];
         let p1 = points[i];
@@ -57,7 +57,6 @@ const MidSection = () => {
         p1.closest = closest;
       }
 
-      // assign circle
       for (let i in points) {
         let c = new Circle(points[i], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
         points[i].circle = c;
@@ -177,6 +176,24 @@ const MidSection = () => {
   return (
     <div id="large-header" className="large-header">
       <canvas id="demo-canvas"></canvas>
+
+      {/* Combined header items in center */}
+      <motion.nav
+        className="nav-center"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <a href="#">Marketplace</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Login</a>
+             {/* Logo at right edge */}
+             <div className="logo-right">
+    <img src={logo} alt="Ekcycle Logo" />
+  </div>
+
+      </motion.nav>
+      {/* Main title in center */}
       <h1 className="main-title">
         Recycle <span className="thin">Batteries</span>
       </h1>

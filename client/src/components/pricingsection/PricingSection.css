@@ -1,72 +1,68 @@
 .pricing-section {
-    background-color: #f0fdf4;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    animation: fadeIn 0.7s ease-in;
-    max-width: 600px;           /* Reduced width */
-    margin: 2rem auto;          /* Center horizontally */
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
-    flex: 0.5;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: #065f46;
-    text-align: center;
-  }
-  
-  .price-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .price-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    padding: 1rem 1.25rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .price-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  }
-  
-  .price-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .price-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 0.375rem;
-    object-fit: cover;
-  }
-  
-  .price-name {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #065f46;
-  }
-  
-  .price-rate {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #047857;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
+  background: #e0f7f4;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 128, 96, 0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+  animation: fadeIn 0.7s ease-in;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  color: #064e3b;
+  margin-bottom: 1.5rem;
+}
+
+.price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 128, 96, 0.1);
+}
+
+.price-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price-icon {
+  font-size: 1.5rem;
+  color: #10b981;
+}
+
+.price-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #047857;
+}
+
+.price-rate {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #065f46;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

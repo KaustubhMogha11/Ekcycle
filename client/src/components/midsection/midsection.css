@@ -42,3 +42,33 @@
     }
   }
   
+  /* Nav Centered */
+  .nav-center {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-center a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-center a:hover {
+    color: #22c55e;
+  }
+  
+  /* Logo Right (no styles, just positioning) */
+  .logo-right {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2;
+  }
+  

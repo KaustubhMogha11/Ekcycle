@@ -8,9 +8,11 @@ import Footer from '../components/footer/Footer';
 import MidSection from '../components/midsection/MidSection';
 import MetalPrices from '../components/metalPrices/metalPrices';
 import './home.css';
+import AnimatedBackground from '../components/AnimationBackground';
 const Home = () => (
   <>
-    <Header />
+  <AnimatedBackground/>
+    {/* <Header /> */}
     <MidSection />
     <ProcessSection />
     <div className="side-by-side-container">

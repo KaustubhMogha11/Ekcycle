@@ -16,7 +16,7 @@ const PricingSection = () => (
         <li key={idx} className="price-item">
           <div className="price-left">
             <span className="price-icon">{item.icon}</span>
-            <span>{item.name}</span>
+            <span className="price-name">{item.name}</span>
           </div>
           <span className="price-rate">{item.rate}</span>
         </li>
