@@ -46,7 +46,7 @@
   .nav-center {
     position: absolute;
     top: 2rem;
-    left: 50%;
+    left: 40%;
     transform: translateX(-50%);
     z-index: 2;
     display: flex;
@@ -71,4 +71,59 @@
     right: 2rem;
     z-index: 2;
   }
-  
+  /* Match nav link style */
+.nav-link {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0dcaf0;
+}
+
+/* User section */
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.logout-btn {
+  background-color: #0dcaf0;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #09b2d1;
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+}

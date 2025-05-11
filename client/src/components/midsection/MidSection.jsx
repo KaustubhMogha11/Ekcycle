@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './midsection.css';
 import { Circ } from 'gsap/all';
 import { TweenLite } from 'gsap';
 import { motion } from 'framer-motion';
 import logo from '../../images/logo.png';
+import { GoogleOAuthProvider, GoogleLogin,googleLogout  } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+
+
+
 
 const MidSection = () => {
   useEffect(() => {
@@ -173,31 +178,68 @@ const MidSection = () => {
     initHeader();
   }, []);
 
+  const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const handleLoginSuccess = (credentialResponse) => {
+    const decoded = jwtDecode(credentialResponse.credential);
+    setUser(decoded);
+    setShowModal(false);
+  };
+
+  const handleLoginError = () => {
+    console.error('Login Failed');
+  };
+
+  const handleLogout = () => {
+    googleLogout();
+    setUser(null);
+  };
+
   return (
+     <GoogleOAuthProvider clientId="1064124323746-joih7ld2k4segefnalikfp4lek1llmv5.apps.googleusercontent.com">
     <div id="large-header" className="large-header">
       <canvas id="demo-canvas"></canvas>
 
-      {/* Combined header items in center */}
-      <motion.nav
-        className="nav-center"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+      {/* Navigation */}
+      <motion.nav className="nav-center" /* animation omitted for brevity */>
+        <a href="#">Home</a>
         <a href="#">Marketplace</a>
         <a href="#">Contact Us</a>
-        <a href="#">Login</a>
-             {/* Logo at right edge */}
-             <div className="logo-right">
-    <img src={logo} alt="Ekcycle Logo" />
-  </div>
 
+        {/* Login/Logout */}
+        {!user ? (
+          <a href="#" className="nav-link" onClick={(e) => { e.preventDefault(); setShowModal(true); }}>
+            Login
+          </a>
+        ) : (
+          <div className="nav-user">
+            <span>Hi, {user.given_name}</span>
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          </div>
+        )}
+
+        {/* Logo */}
+        <div className="logo-right">
+          <img src={logo} alt="Ekcycle Logo" />
+        </div>
       </motion.nav>
-      {/* Main title in center */}
+
+      {/* Google Login Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <GoogleLogin onSuccess={handleLoginSuccess} onError={handleLoginError} />
+          </div>
+        </div>
+      )}
+
+      {/* Main title */}
       <h1 className="main-title">
         Recycle <span className="thin">Batteries</span>
       </h1>
     </div>
+  </GoogleOAuthProvider>
   );
 };
 
