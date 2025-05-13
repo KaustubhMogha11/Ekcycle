@@ -7,12 +7,13 @@ import MarketplaceListings from '../components/marketplacelistings/MarketplaceLi
 import Footer from '../components/footer/Footer';
 import MidSection from '../components/midsection/MidSection';
 import MetalPrices from '../components/metalPrices/metalPrices';
+import NavBar from '../components/navbar/navBarComponent.jsx';
 import './home.css';
 import AnimatedBackground from '../components/AnimationBackground';
 const Home = () => (
   <>
   <AnimatedBackground/>
-    {/* <Header /> */}
+    <NavBar />
     <MidSection />
     <ProcessSection />
     <div className="side-by-side-container">
