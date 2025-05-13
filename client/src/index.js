@@ -11,6 +11,8 @@ root.render(
     domain="dev-sgekq67wre7of5tv.us.auth0.com"
     clientId="wk0Ai4Es2r14RrNzOT4e8KcUNRCtWerW"
     authorizationParams={{ redirect_uri: window.location.origin }}
+    cacheLocation="localstorage"          // Persist in localStorage
+    useRefreshTokens={true} 
   >
   <React.StrictMode>
     <App />
