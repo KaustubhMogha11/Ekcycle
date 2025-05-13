@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import './metalPrices.css';
 
-const API_KEY = '657c808bb2035af13cb2b49ff5c5a960';
+const API_KEY = '7cf4bfccd5c372628851255d01155e1d';
 const API_URL = `https://api.metalpriceapi.com/v1/latest?api_key=${API_KEY}&base=INR`;
 
 const trackedMetals = {

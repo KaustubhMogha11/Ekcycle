@@ -1,196 +1,306 @@
 .footer {
-    background-color: #111827;
-    color: #f3f4f6;
-    padding: 2rem 1.5rem;
-    animation: fadeIn 0.8s ease-in;
+  background-color: #111827;
+  color: #f3f4f6;
+  padding: 2rem 1.5rem;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  min-width: 220px;
+}
+
+.footer-section h5 {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li,
+.footer-section p {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
+}
+
+.footer-section ul li svg,
+.footer-section p svg {
+  color: #22c55e;
+  transition: color 0.3s;
+}
+
+.footer-section ul li:hover,
+.footer-section p:hover {
+  color: #16a34a;
+  cursor: pointer;
+}
+
+.footer-section ul li:hover svg,
+.footer-section p:hover svg {
+  color: #16a34a;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #22c55e;
+}
+
+.brand-tagline {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin-top: 0.5rem;
+}
+
+.footer-social {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.footer-social a {
+  color: #22c55e;
+  margin: 0 0.6rem;
+  font-size: 1.2rem;
+  display: inline-block;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footer-social a:hover {
+  color: #16a34a;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 1.5rem;
+  color: #9ca3af;
+  border-top: 1px solid #1f2937;
+  padding-top: 1rem;
+}
+
+/* ==== Battery Animation Styles ==== */
+.battery {
+  position: relative;
+  width: 1.1rem;
+  height: 2.2rem;
+  box-shadow: 0 0 0 0.1rem #425c77;
+  background: white;
+  border-radius: 0.04rem;
+  display: inline-block;
+}
+
+.battery::before {
+  content: '';
+  position: absolute;
+  top: -0.2rem;
+  left: 0.3rem;
+  width: 0.5rem;
+  height: 0.2rem;
+  background: #425c77;
+  border-radius: 0.1rem;
+}
+
+.battery::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 1.9rem solid rgba(255, 255, 255, 0.325);
+}
+
+.liquid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1.1rem;
+  background: #71fb85;
+  animation: load 2.25s infinite;
+}
+
+.liquid::after,
+.liquid::before {
+  content: '';
+  position: absolute;
+  top: -0.3rem;
+  height: 0.5rem;
+  width: 0.7rem;
+  background: #71fb85;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.liquid::after {
+  right: 0;
+  animation: liquid-1 2.25s infinite;
+}
+
+.liquid::before {
+  left: 0;
+  animation: liquid-2 2.25s infinite;
+}
+
+@keyframes load {
+  0% {
+    top: 2.2rem;
   }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
+  70% {
+    top: 0.6rem;
   }
-  
-  .footer-section h5 {
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-section ul li,
-  .footer-section p {
-    font-size: 0.9rem;
-    margin-bottom: 0.4rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s;
-  }
-  
-  .footer-section ul li svg,
-  .footer-section p svg {
-    color: #22c55e;
-    transition: color 0.3s;
-  }
-  
-  .footer-section ul li:hover,
-  .footer-section p:hover {
-    color: #16a34a;
-    cursor: pointer;
-  }
-  
-  .footer-section ul li:hover svg,
-  .footer-section p:hover svg {
-    color: #16a34a;
-  }
-  
-  .brand-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  
-  .brand-name {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #22c55e;
-  }
-  
-  .brand-tagline {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-    margin-top: 0.5rem;
-  }
-  
-  .footer-social {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .footer-social a {
-    color: #22c55e;
-    margin: 0 0.6rem;
-    font-size: 1.2rem;
-    display: inline-block;
-    transition: transform 0.3s, color 0.3s;
-  }
-  
-  .footer-social a:hover {
-    color: #16a34a;
-    transform: scale(1.2);
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    font-size: 0.75rem;
-    margin-top: 1.5rem;
-    color: #9ca3af;
-    border-top: 1px solid #1f2937;
-    padding-top: 1rem;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* ==== Battery Animation Styles ==== */
-  .battery {
-    position: relative;
-    width: 1.1rem;
-    height: 2.2rem;
-    box-shadow: 0 0 0 0.1rem #425C77;
-    background: white;
-    border-radius: 0.04rem;
-    display: inline-block;
-  }
-  
-  .battery::before {
-    content: '';
-    position: absolute;
-    top: -0.2rem;
-    left: 0.3rem;
-    width: 0.5rem;
-    height: 0.2rem;
-    background: #425C77;
-    border-radius: 0.1rem;
-  }
-  
-  .battery::after {
-    content: '';
-    position: absolute;
+  90% {
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-right: 0.5rem solid transparent;
-    border-bottom: 1.9rem solid rgba(255, 255, 255, 0.325);
   }
-  
-  .liquid {
-    position: absolute;
+  95% {
     top: 0;
-    bottom: 0;
-    left: 0;
-    width: 1.1rem;
-    background: #71FB85;
-    animation: load 2.25s infinite;
   }
-  
-  .liquid::after,
-  .liquid::before {
-    content: '';
-    position: absolute;
+  100% {
+    top: 2.2rem;
+  }
+}
+
+@keyframes liquid-1 {
+  0% {
+    height: 0;
+    opacity: 0;
     top: -0.3rem;
+  }
+  22% {
+    height: 0.15rem;
+    top: 0.15rem;
+    opacity: 1;
+  }
+  25% {
+    top: -0.1rem;
+  }
+  35% {
     height: 0.5rem;
-    width: 0.7rem;
-    background: #71FB85;
-    border-radius: 50%;
+    top: -0.25rem;
+  }
+  55% {
+    height: 0.15rem;
+    top: -0.05rem;
+  }
+  60% {
+    height: 0.4rem;
+    opacity: 1;
+    top: -0.1rem;
+  }
+  96% {
+    height: 0.5rem;
+    opacity: 0;
+    top: 0.2rem;
+  }
+  100% {
+    height: 0;
     opacity: 0;
   }
-  
-  .liquid::after {
-    right: 0;
-    animation: liquid-1 2.25s infinite;
+}
+
+@keyframes liquid-2 {
+  0% {
+    height: 0;
+    opacity: 0;
+    top: -0.3rem;
   }
-  
-  .liquid::before {
-    left: 0;
-    animation: liquid-2 2.25s infinite;
+  17.5% {
+    height: 0.15rem;
+    top: 0.1rem;
+    opacity: 1;
   }
-  
-  @keyframes load {
-    0% { top: 2.2rem; }
-    70% { top: 0.6rem; }
-    90% { top: 0; }
-    95% { top: 0; }
-    100% { top: 2.2rem; }
+  20% {
+    top: -0.1rem;
   }
-  
-  @keyframes liquid-1 {
-    0% { height: 0; opacity: 0; top: -0.3rem; }
-    22% { height: 0.15rem; top: 0.15rem; opacity: 1; }
-    25% { top: -0.1rem; }
-    35% { height: 0.5rem; top: -0.25rem; }
-    55% { height: 0.15rem; top: -0.05rem; }
-    60% { height: 0.4rem; opacity: 1; top: -0.1rem; }
-    96% { height: 0.5rem; opacity: 0; top: 0.2rem; }
-    100% { height: 0; opacity: 0; }
+  25% {
+    height: 0.6rem;
+    top: -0.3rem;
   }
-  
-  @keyframes liquid-2 {
-    0% { height: 0; opacity: 0; top: -0.3rem; }
-    17.5% { height: 0.15rem; top: 0.1rem; opacity: 1; }
-    20% { top: -0.1rem; }
-    25% { height: 0.6rem; top: -0.3rem; }
-    45% { height: 0.15rem; top: -0.05rem; }
-    60% { height: 0.6rem; opacity: 1; top: -0.25rem; }
-    96% { height: 0.4rem; opacity: 0; top: 0.2rem; }
-    100% { height: 0; opacity: 0; }
+  45% {
+    height: 0.15rem;
+    top: -0.05rem;
   }
-  
+  60% {
+    height: 0.6rem;
+    opacity: 1;
+    top: -0.25rem;
+  }
+  96% {
+    height: 0.4rem;
+    opacity: 0;
+    top: 0.2rem;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* ==== Responsive Styles ==== */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  .brand-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .footer-social a {
+    font-size: 1rem;
+    margin: 0 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-section h5 {
+    font-size: 0.95rem;
+  }
+
+  .footer-section ul li,
+  .footer-section p {
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.7rem;
+  }
+}

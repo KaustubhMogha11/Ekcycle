@@ -1,121 +1,101 @@
 .marketplace-section {
-    padding: 3rem 2rem;
-    background: linear-gradient(325deg, #e0ffe8, #e8f9ff);
-    border-top: 1px solid #e6f7ff;
-    margin-top: 4px;
-    border-radius: 1rem;
-  }
-  
-  .marketplace-heading {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: #00b894;
-    text-align: center;
-  }
-  
-  .marketplace-list {
-    display: flex;
-    gap: 1.5rem;
-    /* flex-wrap: wrap;  */
-    justify-content: center; /* Center the cards horizontally */
-  }
-  
-  .marketplace-card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0, 255, 204, 0.1);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 255, 204, 0.07);
-    width: calc(33.33% - 1rem); /* Adjust the width to fit 3 cards per row */
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
-  }
-  
-  .marketplace-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0, 255, 204, 0.25);
-  }
-  
-  .marketplace-card:nth-child(1) { animation-delay: 0.1s; }
-  .marketplace-card:nth-child(2) { animation-delay: 0.25s; }
-  .marketplace-card:nth-child(3) { animation-delay: 0.4s; }
-  
-  /* Adjust for smaller screen sizes */
-  @media (max-width: 768px) {
-    .marketplace-card {
-      width: calc(50% - 1rem); /* 2 cards per row on smaller screens */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .marketplace-card {
-      width: 100%; /* 1 card per row on very small screens */
-    }
-  }
-  
-  .listing-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.7rem;
-  }
-  
-  .icon {
-    font-size: 1.3rem;
-    color: #00cec9;
-  }
-  
-  .listing-title {
-    font-weight: 600;
-    font-size: 1.05rem;
-    color: #222;
-  }
-  
-  .listing-details {
-    font-size: 0.95rem;
-    color: #444;
-    margin-bottom: 0.4rem;
-  }
-  
-  .listing-location {
-    font-size: 0.85rem;
-    color: #666;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 0.6rem;
-  }
-  
-  .listing-status {
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .verified {
-    background-color: rgba(0, 255, 204, 0.15);
-    color: #009970;
-  }
-  
-  .pending {
-    background-color: rgba(255, 215, 0, 0.15);
-    color: #d35400;
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+  padding: 3rem 1rem;
+  background: linear-gradient(325deg, #e0ffe8, #e8f9ff);
+  border-top: 1px solid #e6f7ff;
+  border-radius: 1rem;
+  margin-top: 4px;
+}
+
+.marketplace-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #00b894;
+  text-align: center;
+}
+
+.marketplace-carousel {
+  padding: 0 0.5rem;
+}
+
+.marketplace-card-wrapper {
+  padding: 0 10px; /* Adds horizontal spacing between slides */
+  box-sizing: border-box;
+}
+
+.marketplace-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 255, 204, 0.1);
+  border: 1px solid rgba(0, 255, 204, 0.07);
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.marketplace-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 255, 204, 0.25);
+}
+
+.listing-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.icon {
+  font-size: 1.3rem;
+  color: #00cec9;
+}
+
+.listing-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+.listing-details {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.listing-location {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0.6rem;
+}
+
+.listing-status {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.verified {
+  background-color: rgba(0, 255, 204, 0.15);
+  color: #009970;
+}
+
+.pending {
+  background-color: rgba(255, 215, 0, 0.15);
+  color: #d35400;
+}
+
+/* Slick carousel custom styles */
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #00cec9;
+}
+.slick-dots li.slick-active button:before {
+  color: #00cec9;
+}

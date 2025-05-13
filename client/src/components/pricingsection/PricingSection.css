@@ -4,16 +4,18 @@
   border-radius: 1rem;
   box-shadow: 0 6px 20px rgba(0, 128, 96, 0.1);
   max-width: 600px;
+  width: 90%;
   margin: 2rem auto;
   animation: fadeIn 0.7s ease-in;
 }
 
 .section-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
   color: #064e3b;
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 4px rgba(16, 185, 129, 0.15);
 }
 
 .price-list {
@@ -35,14 +37,15 @@
 }
 
 .price-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(0, 128, 96, 0.1);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 128, 96, 0.12);
 }
 
 .price-left {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .price-icon {
@@ -62,7 +65,49 @@
   color: #065f46;
 }
 
+/* Fade-in animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .price-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .price-left {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .price-rate {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .price-name {
+    font-size: 0.95rem;
+  }
+
+  .price-rate {
+    font-size: 1rem;
+  }
 }
