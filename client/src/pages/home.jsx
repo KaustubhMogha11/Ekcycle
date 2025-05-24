@@ -10,10 +10,13 @@ import MetalPrices from '../components/metalPrices/metalPrices';
 import NavBar from '../components/navbar/navBarComponent.jsx';
 import './home.css';
 import AnimatedBackground from '../components/AnimationBackground';
+import WhatsAppButton from '../components/whatsApp/whatsAppButton.jsx';
 const Home = () => (
   <>
   <AnimatedBackground/>
-    <NavBar />
+    {/* <NavBar /> */}
+    <WhatsAppButton/>
+    <Header/>
     <MidSection />
     <ProcessSection />
     <div className="side-by-side-container">
