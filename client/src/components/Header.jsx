@@ -14,21 +14,20 @@ const Header = () => {
   return (
     <header className="header">
       <div className="top-bar">
-        <div className="menu-toggle" onClick={toggleMenu}>
-          {isMenuOpen ? "×" : "☰"}
-        </div>
         <div className="logo-container">
           <img src={logo} alt="Logo" className="logo-img" />
         </div>
-      </div>
 
-      <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Process</a>
-        <a href="#">Contact</a>
+        <div className="menu-toggle" onClick={toggleMenu}>
+          {isMenuOpen ? "×" : "☰"}
+        </div>
 
-        <div className="nav-right">
+        <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Process</a>
+          <a href="#">Contact</a>
+
           {!isAuthenticated ? (
             <a
               href="#"
@@ -57,8 +56,8 @@ const Header = () => {
               </button>
             </div>
           )}
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 };
