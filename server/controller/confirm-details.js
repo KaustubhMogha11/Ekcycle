@@ -1,7 +1,8 @@
 import { validateMaterial } from "../validations/battery-type-validator.js";
 import { StatusCodes as HTTP_STATUS } from 'http-status-codes';
+import { generateEBill } from "../service/generate-e-bill.js";
 
-export async function generateInvoice(req, res){
+export async function confirmDetails(req, res){
     try {
         // Validate the form inputs and all the material fields using Joi
         const { error, value } = validateMaterial(req.body);
@@ -12,10 +13,10 @@ export async function generateInvoice(req, res){
         }
     
         const calculatePrice = calculatePricing(value);
-        data = { ...value, totalPrice: calculatePrice.toFixed(2)}
+        let data = { ...value, totalPrice: calculatePrice.toFixed(2)}
     
         // TODO Ashu: Generate Invoice
-        // await generateEBill()
+        await generateEBill(data, "MaterialInfo.pdf")
         // TODO Ashu: Send Mail to user
     
         return res.status(HTTP_STATUS.OK).json({
@@ -23,6 +24,7 @@ export async function generateInvoice(req, res){
             data: { ...value, totalPrice: calculatePrice.toFixed(2)}
         });
     } catch (error) {
+        console.log(error);
         return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
             message : "Something went wrong"
         })

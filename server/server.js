@@ -17,17 +17,17 @@ const password = process.env.DB_PASSWORD;
 
 // app.use(bodyParser.json({ extended: true }));
 // app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/', router);
 
 
-DbConnection(username, password).then(() => {
+// DbConnection(username, password).then(() => {
     app.listen(port, () => {
         console.log(`✅ Server is running on port: ${port}`);
     });
-}).catch((error) => {
-    console.error('❌ Failed to connect to DB or start server:', error);
-    process.exit(1); // Use 1 for general errors, not 0 (which means successful exit)
-});
+// }).catch((error) => {
+//     console.error('❌ Failed to connect to DB or start server:', error);
+//     process.exit(1); // Use 1 for general errors, not 0 (which means successful exit)
+// });

@@ -43,9 +43,9 @@ export async function generateEBill(data, outputPath) {
     const currency = 'Rs.';
 
     doc.image(path.join(__dirname, 'public', 'EkCycleLogo.jpg'), 50, 30, { width: 60 });
-    doc.fontSize(16).font('Helvetica-Bold').text('Invoice', 270, 60);
+    doc.fontSize(16).font('Helvetica-Bold').text('Material Information', 220, 60);
     doc.fontSize(10).font('Helvetica')
-       .text(`Invoice #: ${invoiceNumber}`, 450, 50)
+    //    .text(`Invoice #: ${invoiceNumber}`, 450, 50)
        .text(`Date: ${new Date().toLocaleDateString()}`, 450, 65);
 
     doc.moveTo(50, 100).lineTo(550, 100).stroke();
@@ -114,7 +114,7 @@ export async function generateEBill(data, outputPath) {
             data.material === 'second_life' ? `Battery Scrap Type: ${data.second_life_type}` :
             data.material === 'blackmass' ? `Blackmass: ${data.blackmass_type}` : 'Unknown').toUpperCase(),
             data.quantity.toString(),
-            `${currency}${data.totalPrice.toFixed(2)}`
+            `${currency}${data.totalPrice}`
         ]]
     }, 50, currentY, [200, 100, 150], 20);
 
@@ -181,6 +181,6 @@ const sampleBlackmass = {
 };
 
 // Generate sample invoices
-generateEBill(sampleBatteryScrap, 'battery_scrap_invoice.pdf');
-generateEBill(sampleSecondLife, 'second_life_invoice.pdf');
-generateEBill(sampleBlackmass, 'blackmass_invoice.pdf');
+// generateEBill(sampleBatteryScrap, 'battery_scrap_invoice.pdf');
+// generateEBill(sampleSecondLife, 'second_life_invoice.pdf');
+// generateEBill(sampleBlackmass, 'blackmass_invoice.pdf');

@@ -31,5 +31,5 @@ const schemas = {
 export const validateMaterial = (data) => {
     const schema = schemas[data.material];
     if (!schema) return { error: { details: [{ message: 'Invalid material type' }] } };
-    return schema.validate(data);
+    return schema.validate(data, { stripUnknown: true });
 };

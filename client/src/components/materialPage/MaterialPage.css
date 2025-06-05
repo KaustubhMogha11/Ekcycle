@@ -1,0 +1,99 @@
+.marketplace-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.marketplace-container {
+  flex: 1;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Rest of your CSS remains the same */
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="number"], 
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #4CAF50;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 0.5rem;
+}
+
+input[readonly]#pricing {
+  background-color: #e8f5e9;
+  font-weight: bold;
+  color: #2e7d32;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 2px dashed #a5d6a7;
+  cursor: default;
+}
+
+label {
+  margin-top: 15px;
+}
+
+input[type="submit"] {
+  background: linear-gradient(135deg, #4CAF50, #81C784);
+  font-weight: bold;
+}
