@@ -1,230 +1,128 @@
-/* General Styles */
 .large-header {
   position: relative;
   width: 100%;
-  background: #333;
+  background: linear-gradient(to bottom right, #e8f5f1, #f9fdfc);
   overflow: hidden;
-  background-image: url('https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/img/demo-1-bg.jpg');
-  background-size: cover;
-  background-position: center center;
-  z-index: 1;
 }
 
-#demo-canvas {
-  display: block;
+canvas#demo-canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start; /* Top alignment */
+  justify-content: space-between;
+  max-width: 95%; /* Wider layout */
+  margin: 0 auto;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.left-text {
+  flex: 1.1;
+  min-width: 350px;
+  padding-top: 10px;
 }
 
 .main-title {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  color: #f9f1e9;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  z-index: 1;
-  font-size: 4.2em;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 6.5rem;
+  color: #103c2d;
+  margin-bottom: 25px;
+  line-height: 1.2;
 }
 
-.main-title .thin {
-  font-weight: 200;
+.thin {
+  font-weight: 300;
 }
 
-
-/* Navigation Styles */
-.nav-center {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  gap: 2rem;
+.description {
+  font-size: 1.625rem;
+  color: #333;
+  margin-bottom: 40px;
+  max-width: 650px;
 }
 
-.nav-center a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-center a:hover {
-  color: #22c55e;
-}
-
-/* Logo Right (no styles, just positioning) */
-.logo-right img {
-  height: 60px; /* Adjust as needed */
-  width: auto;
-  margin: -25px 0;
-  object-fit: contain;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6)); /* Optional for visibility */
-  margin-left:-670%
-}
-
-
-/* Navigation Link Styling */
-.nav-link {
+.learn-more-btn {
+  padding: 16px 36px;
+  background-color: #54b67d;
   color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #0dcaf0;
-}
-
-/* User Section */
-.nav-user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: white;
-}
-
-.logout-btn {
-  background-color: #0dcaf0;
+  font-size: 20px;
   border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-weight: 500;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
-.logout-btn:hover {
-  background-color: #09b2d1;
+.learn-more-btn:hover {
+  background-color: #409b65;
 }
 
-/* Modal Styling */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+.right-image {
+  flex: 1.3; /* Increase space allocated to image */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+  justify-content: flex-end; /* Align to right */
+  align-items: flex-start;
+  min-width: 350px;
 }
 
-.modal-box {
-  background: #111;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+.right-image img {
+  width: 100%;
+  max-width: 750px; /* Stretch wider */
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0; /* Remove centering */
 }
 
-/* Media Queries for Responsiveness */
-
-/* Small screens (up to 600px) */
-@media only screen and (max-width: 600px) {
+/* Tablet */
+@media (max-width: 1024px) {
   .main-title {
-    font-size: 2.5em;
+    font-size: 4rem;
   }
 
-  .nav-center {
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 1rem;
+  .description {
+    font-size: 1.2rem;
   }
 
-  .nav-center a {
-    font-size: 14px;
+  .overlay-content {
+    padding: 60px 30px;
   }
 
-  .nav-link {
-    font-size: 14px;
-  }
-
-  .logout-btn {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-/* 
-  .logo-right {
-    top: 1rem;
-    right: 1rem;
-  } */
-}
-
-/* Medium screens (600px to 768px) */
-@media only screen and (max-width: 768px) {
-  .main-title {
-    font-size: 3em;
-  }
-
-  .nav-center {
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 1.5rem;
-  }
-
-  .nav-center a {
-    font-size: 15px;
-  }
-
-  .nav-link {
-    font-size: 15px;
-  }
-
-  .logout-btn {
-    font-size: 15px;
-    padding: 5px 9px;
+  .right-image img {
+    max-width: 500px;
   }
 }
 
-/* Large screens (above 768px) */
-@media only screen and (min-width: 768px) {
+/* Mobile */
+@media (max-width: 768px) {
+  .overlay-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
   .main-title {
-    font-size: 4.2em;
+    font-size: 3rem;
   }
 
-  .nav-center {
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+  .description {
+    font-size: 1rem;
+    margin: 0 auto 30px;
   }
 
-  .nav-link {
+  .learn-more-btn {
     font-size: 16px;
+    padding: 12px 24px;
   }
 
-  .logout-btn {
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-}
-
-/* Extra Large Screens (above 1200px) */
-@media only screen and (min-width: 1200px) {
-  .main-title {
-    font-size: 4.5em;
-  }
-
-  .nav-center {
-    top: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 2.5rem;
-  }
-
-  .nav-center a {
-    font-size: 17px;
+  .right-image img {
+    max-width: 100%;
   }
 }

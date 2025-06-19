@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2';
-import NavBar from '../navbar/navBarComponent';
+import Header from '../Header';
 import './MaterialPage.css';
 
 const MaterialPage = () => {
@@ -133,7 +133,7 @@ const MaterialPage = () => {
 
   return (
     <div className="marketplace-page">
-      <NavBar />
+      <Header/>
       <div className="marketplace-container">
         <div className="container">
           {loading ? (

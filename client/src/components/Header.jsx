@@ -1,31 +1,62 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import logo from '../images/logo.png'; // Ensure path is correct
-import './Header.css'; // Add this if not already importing CSS
+import React, { useState } from "react";
+import { useAuth0 } from '@auth0/auth0-react';
+import logo from '../images/logo.png';
+import './Header.css';
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header">
-      <motion.div
-        className="logo-container"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <img src={logo} alt="Ekcycle Logo" className="logo-img" />
-        <span className="logo-text">Ekcycle</span>
-      </motion.div>
+      <div className="top-bar">
+        <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo-img" />
+        </div>
 
-      <motion.nav
-        className="nav"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-      >
-        <a href="#">Marketplace</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Login</a>
-      </motion.nav>
+        <div className="menu-toggle" onClick={toggleMenu}>
+          {isMenuOpen ? "×" : "☰"}
+        </div>
+
+        <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
+          <a href="/">Home</a>
+          <a href="/marketplace">MarketPlace</a>
+          <a href="#">Contact</a>
+
+          {!isAuthenticated ? (
+            <a
+              href="#"
+              className="nav-link"
+              onClick={(e) => {
+                e.preventDefault();
+                loginWithRedirect();
+              }}
+            >
+              Login
+            </a>
+          ) : (
+            <div className="nav-user">
+              <span>Hi, {user?.given_name || user?.name || user?.email}</span>
+              <button
+                className="logout-btn"
+                onClick={() =>
+                  logout({
+                    logoutParams: {
+                      returnTo: window.location.origin,
+                    },
+                  })
+                }
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </nav>
+      </div>
     </header>
   );
 };
