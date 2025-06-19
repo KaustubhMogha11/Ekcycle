@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './midsection.css';
 import { Circ } from 'gsap/all';
 import { TweenLite } from 'gsap';
-import image from '../../images/yyy.png';
+import image from '../../images/yy.png';
 
 const CanvasBackground = () => {
   useEffect(() => {
