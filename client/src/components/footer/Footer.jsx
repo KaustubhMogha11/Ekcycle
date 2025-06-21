@@ -14,7 +14,7 @@ const Footer = () => (
           <div className="battery">
             <div className="liquid"></div>
           </div>
-          <h4 className="brand-name">Ekcycle</h4>
+          <h4 className="brand-name">PunarChakar</h4>
         </div>
         <p className="brand-tagline">Revolutionizing battery recycling with smart collection<br/>quality verification and market place solutions.</p>
       </div>

@@ -2,26 +2,50 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #e8f5f1, #f9fdfc);
+  background: #ffffff; /* solid white background */
   display: flex;
-  align-items: flex-start; /* Shift towards top */
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
   padding-top: 40px;
+  padding-bottom: 180px; /* make space for the wave */
+}
+
+/* Floating animated wave at the bottom */
+.large-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 180px;
+  background: #c5f1d5; /* soft green wave */
+  clip-path: ellipse(75% 100% at 50% 100%);
+  animation: waveFloat 6s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes waveFloat {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-5%) translateY(-10px);
+  }
 }
 
 canvas#demo-canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 0;
 }
 
 .overlay-content {
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: flex-start; /* Align to top */
+  align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   padding: 40px 5%;
@@ -73,7 +97,7 @@ canvas#demo-canvas {
   cursor: pointer;
   transition: background 0.3s ease;
   animation: fadeInUp 1.5s ease forwards;
-    text-decoration: none; /* Removes underline */
+  text-decoration: none;
 }
 
 .learn-more-btn:hover {
@@ -90,10 +114,11 @@ canvas#demo-canvas {
 
 .right-image img {
   width: 100%;
-  max-width: 700px;
+  max-width: 100%;
   height: auto;
   border-radius: 12px;
   object-fit: contain;
+  display: block;
 }
 
 /* Animations */
@@ -119,7 +144,7 @@ canvas#demo-canvas {
   }
 }
 
-/* Tablet */
+/* Tablet View */
 @media (max-width: 1024px) {
   .main-title {
     font-size: 3.5rem;
@@ -138,16 +163,26 @@ canvas#demo-canvas {
   }
 }
 
-/* Mobile */
+/* Mobile View */
 @media (max-width: 768px) {
+  .large-header {
+    padding-top: 30px;
+    padding-bottom: 160px; /* enough room for wave */
+  }
+
   .overlay-content {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 50px 20px;
+    padding: 40px 20px;
+    gap: 30px;
   }
 
   .left-text {
+    flex: unset;
+    min-width: 100%;
+    padding: 0;
     text-align: center;
     animation: fadeInUp 1s ease-in-out;
   }
@@ -155,15 +190,20 @@ canvas#demo-canvas {
   .main-title,
   .description {
     text-align: center;
+    width: 100%;
   }
 
   .main-title {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    line-height: 1.3;
+    margin-bottom: 15px;
   }
 
   .description {
-    font-size: 1rem;
-    margin-bottom: 30px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding: 0 10px;
   }
 
   .learn-more-btn {
@@ -171,7 +211,18 @@ canvas#demo-canvas {
     padding: 12px 24px;
   }
 
+  .right-image {
+    justify-content: center;
+    width: 100%;
+  }
+
   .right-image img {
     max-width: 90%;
+    height: auto;
+  }
+
+  .large-header::after {
+    height: 120px;
+    clip-path: ellipse(85% 100% at 50% 100%);
   }
 }
