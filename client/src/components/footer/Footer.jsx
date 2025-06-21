@@ -23,7 +23,7 @@ const Footer = () => (
         <h5>Quick Links</h5>
         <ul>
           <li><FaRocket /> Dashboard</li>
-          <li><FaStore /> Marketplace</li>
+          <li><FaStore /> Enquiry</li>
           <li><FaCalendarAlt /> Schedule</li>
         </ul>
       </div>
@@ -32,12 +32,11 @@ const Footer = () => (
         <h5>Contact Us</h5>
         <p><FaMapMarkerAlt /> Dasratpuri, Delhi, India 110059</p>
         <p><FaPhoneAlt /> +91 908 437 0502</p>
-        <p><FaEnvelope /> info@ekcycle.co</p>
+        <p><FaEnvelope /> info@punarchakar.com</p>
       </div>
     </div>
 
     <div className="footer-social">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
       <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
       <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
       <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>

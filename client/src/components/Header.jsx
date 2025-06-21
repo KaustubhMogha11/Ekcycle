@@ -24,7 +24,7 @@ const Header = () => {
 
         <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
           <a href="/">Home</a>
-          <a href="/marketplace">MarketPlace</a>
+          <a href="/marketplace">Enquiry</a>
           <a href="#">Contact</a>
 
           {!isAuthenticated ? (
