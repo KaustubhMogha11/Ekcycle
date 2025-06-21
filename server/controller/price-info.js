@@ -1,5 +1,5 @@
 // Get price information based on material type and battery type
-const getPriceInfo = async (req, res) => {
+export const getPriceInfo = async (req, res) => {
   try {
     const { materialType, batteryType } = req.query;
 
@@ -44,7 +44,7 @@ const getPriceInfo = async (req, res) => {
 };
 
 // Create or update price information (for admin use)
-const createOrUpdatePriceInfo = async (req, res) => {
+export const createOrUpdatePriceInfo = async (req, res) => {
   try {
     const { materialType, batteryType, basePrice, pricePerUnit, unit } = req.body;
 
@@ -93,9 +93,4 @@ const createOrUpdatePriceInfo = async (req, res) => {
       error: error.message
     });
   }
-};
-
-module.exports = {
-  getPriceInfo,
-  createOrUpdatePriceInfo
 };
