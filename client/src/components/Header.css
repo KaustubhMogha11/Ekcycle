@@ -17,18 +17,17 @@
   gap: 1.5rem;
 }
 
-/* Logo */
+.logo-img {
+  width: 120px; /* Increased width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+}
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem; /* Previously 0.5rem */
 }
 
-.logo-img {
-  width: 80px; /* Increased size */
-  height: 60px;
-  object-fit: contain;
-}
 
 .logo-text {
   font-size: 1.5rem;
