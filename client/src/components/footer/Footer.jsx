@@ -7,7 +7,7 @@ import {
 import './Footer.css';
 
 const Footer = () => (
-  <footer className="footer">
+  <footer className="footer" id='footer-section'>
     <div className="footer-content">
       <div className="footer-section brand">
         <div className="brand-header">

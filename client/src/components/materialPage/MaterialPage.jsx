@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Swal from 'sweetalert2';
 import Header from '../Header';
+import Footer from '../footer/Footer';
 import './MaterialPage.css';
+
+window.fetchedPricingInfo = null; // Global variable to store fetched pricing info
 
 const MaterialPage = () => {
   const { user } = useAuth0();
@@ -34,14 +37,14 @@ const MaterialPage = () => {
   useEffect(() => {
     const fetchInitialPriceInfo = async () => {
       try {
-        const response = await fetch('http://localhost:8000/get-pricing-info');
+        const response = await fetch('http://localhost:8000/price-info');
         if (!response.ok) throw new Error('Failed to fetch price info');
         const data = await response.json();
 
-        setFormData(prev => ({
-          ...prev,
-          pricing: data?.defaultPricing?.toFixed(2) || prev.pricing
-        }));
+        window.fetchedPricingInfo = data.data; // Store fetched pricing info globally
+        Object.freeze(window.fetchedPricingInfo); // Make it immutable
+        console.log('Fetched Price Info:', window.fetchedPricingInfo);
+
       } catch (error) {
         console.error('Error fetching price info:', error);
       } finally {
@@ -52,17 +55,19 @@ const MaterialPage = () => {
     fetchInitialPriceInfo();
   }, []);
 
-  useEffect(() => {
+useEffect(() => {
+  if (window.fetchedPricingInfo) {
     calculatePricing();
-  }, [
-    formData.material,
-    formData.battery_type,
-    formData.second_life_type,
-    formData.blackmass_type,
-    formData.co_percent,
-    formData.ni_percent,
-    formData.quantity
-  ]);
+  }
+}, [
+  formData.material,
+  formData.battery_type,
+  formData.second_life_type,
+  formData.blackmass_type,
+  formData.co_percent,
+  formData.ni_percent,
+  formData.quantity
+]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,20 +79,21 @@ const MaterialPage = () => {
 
   const calculatePricing = () => {
     const { material, quantity, battery_type, second_life_type, blackmass_type, co_percent, ni_percent } = formData;
+    const { lcoSPrice, nmcSPrice, lfpSPrice, secondLifePrice, CoMarketPrice, CoPayable, NiMarketPrice, NiPayable} = window.fetchedPricingInfo;
     let pricing = 0;
     const qty = parseFloat(quantity) || 0;
 
     if (material === 'battery_scrap' && qty > 0) {
-      if (battery_type === 'lco-s') pricing = 120 * qty;
-      else if (battery_type === 'nmc-s') pricing = 80 * qty;
-      else if (battery_type === 'lfp-s') pricing = 40 * qty;
+      if (battery_type === 'lco-s') pricing = lcoSPrice * qty;
+      else if (battery_type === 'nmc-s') pricing = nmcSPrice * qty;
+      else if (battery_type === 'lfp-s') pricing = lfpSPrice * qty;
     } else if (material === 'second_life' && qty > 0) {
-      pricing = 80 * qty;
+      pricing = secondLifePrice * qty;
     } else if (material === 'blackmass' && qty > 0) {
       const coPct = parseFloat(co_percent) / 100 || 0;
       const niPct = parseFloat(ni_percent) / 100 || 0;
       if (blackmass_type === 'lco-b' || blackmass_type === 'nmc-b') {
-        pricing = (coPct * 21.3 * 59 + niPct * 15.3 * 59) * qty;
+        pricing = (coPct * CoMarketPrice * CoPayable + niPct * NiMarketPrice * NiPayable) * qty;
       }
     }
 
@@ -250,7 +256,7 @@ const MaterialPage = () => {
                       <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required value={formData.quantity} onChange={handleChange} min="1" />
                     </div>
                     <div>
-                      <label htmlFor="pricing">Pricing:</label>
+                      <label htmlFor="pricing">Pricing: (Rs)</label>
                       <input type="text" id="pricing" name="pricing" placeholder="Calculated Pricing" readOnly value={formData.pricing} />
                     </div>
                   </div>
@@ -271,6 +277,7 @@ const MaterialPage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import { validateMaterial } from "../validations/battery-type-validator.js";
+import PriceInfo from '../models/PriceInfo.js';
 import { StatusCodes as HTTP_STATUS } from 'http-status-codes';
 import { generateEBill } from "../service/generate-e-bill.js";
+import { sendInvoiceEmail } from "../service/node-mailer.js";
 
 export async function confirmDetails(req, res){
     try {
@@ -12,12 +14,13 @@ export async function confirmDetails(req, res){
             return res.status(HTTP_STATUS.BAD_REQUEST).json({ error: error.details[0].message });
         }
     
-        const calculatePrice = calculatePricing(value);
-        let data = { ...value, totalPrice: calculatePrice.toFixed(2)}
+        const calculatePrice = await calculatePricing(value);
+        let data = { ...value, totalPrice: Number(calculatePrice.toFixed(2))}
     
-        // TODO Ashu: Generate Invoice
-        await generateEBill(data, "MaterialInfo.pdf")
-        // TODO Ashu: Send Mail to user
+        // Generate the e-bill PDF
+        let confirmationDetails = await generateEBill(data, "MaterialInfo_confirmation_punarchakar.pdf")
+        // send the invoice email
+        await sendInvoiceEmail(data, confirmationDetails)
     
         return res.status(HTTP_STATUS.OK).json({
             message: 'Material submitted successfully.',
@@ -32,24 +35,51 @@ export async function confirmDetails(req, res){
     }
 }
 
-const calculatePricing = (data) => {
-    const { material, quantity } = data;
+const calculatePricing = async (data) => {
+  try {
+    const { material, quantity, battery_type, second_life_type, blackmass_type, co_percent, ni_percent } = data;
+
+    const qty = parseFloat(quantity) || 0;
+
+    // Fetch latest price info
+    const priceInfo = await PriceInfo.findOne().sort({ createdAt: -1 });
+    if (!priceInfo) {
+        throw new Error('Price information not found. Please ensure prices are set up correctly.');
+    }
+
+    // Destructure required prices
+    const {
+      lcoSPrice,
+      nmcSPrice,
+      lfpSPrice,
+      secondLifePrice,
+      CoMarketPrice,
+      CoPayable,
+      NiMarketPrice,
+      NiPayable
+    } = priceInfo;
+
+    let pricing = 0;
 
     if (material === 'battery_scrap') {
-        const rates = { 'lco-s': 120, 'nmc-s': 80, 'lfp-s': 40 };
-        return rates[data.battery_type] * quantity;
+      if (battery_type === 'lco-s') pricing = lcoSPrice * qty;
+      else if (battery_type === 'nmc-s') pricing = nmcSPrice * qty;
+      else if (battery_type === 'lfp-s') pricing = lfpSPrice * qty;
+    } else if (material === 'second_life') {
+      pricing = secondLifePrice * qty;
+    } else if (material === 'blackmass') {
+      const coPct = parseFloat(co_percent) / 100 || 0;
+      const niPct = parseFloat(ni_percent) / 100 || 0;
+
+      if (blackmass_type === 'lco-b' || blackmass_type === 'nmc-b') {
+        pricing = (coPct * CoMarketPrice * CoPayable + niPct * NiMarketPrice * NiPayable) * qty;
+      }
     }
 
-    if (material === 'second_life') {
-        return 80 * quantity;
-    }
+    return pricing;
 
-    if (material === 'blackmass') {
-        const coPercent = data.co_percent / 100;
-        const niPercent = data.ni_percent / 100;
-        const unitPrice = (coPercent * 21.3 * 59) + (niPercent * 15.3 * 59);
-        return unitPrice * quantity;
-    }
-
-    return 0;
+  } catch (error) {
+    console.error('Error calculating pricing:', error);
+    throw new Error('Failed to calculate pricing. Please try again later.');
+  }
 };
