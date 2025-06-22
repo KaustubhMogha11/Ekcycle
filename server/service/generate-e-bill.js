@@ -37,16 +37,17 @@ function createTableWithBorders(doc, data, startX, startY, columnWidths, rowHeig
 }
 
 export async function generateEBill(data, outputPath) {
-    const doc = new PDFDocument({ size: 'A4', margin: 50 });
+    const doc = new PDFDocument({ size: 'A4', margin: 40 });
     doc.pipe(fs.createWriteStream(outputPath));
-    const invoiceNumber = Math.floor(100000 + Math.random() * 900000);
+    const confirmationNumber = generateConfirmationNumber();
     const currency = 'Rs.';
 
-    doc.image(path.join(__dirname, 'public', 'EkCycleLogo.jpg'), 50, 30, { width: 60 });
-    doc.fontSize(16).font('Helvetica-Bold').text('Material Information', 220, 60);
+    const imagePath = path.join(__dirname, 'public', 'punarchakr_logo_white.png');
+    doc.image(imagePath, 40, 30, { width: 150 });
+    doc.fontSize(16).font('Helvetica-Bold').text('Material Information', 220, 70);
     doc.fontSize(10).font('Helvetica')
-    //    .text(`Invoice #: ${invoiceNumber}`, 450, 50)
-       .text(`Date: ${new Date().toLocaleDateString()}`, 450, 65);
+       .text(`#: ${confirmationNumber}`, 450, 50)
+       .text(`Date: ${new Date().toLocaleDateString()}`, 450, 75);
 
     doc.moveTo(50, 100).lineTo(550, 100).stroke();
 
@@ -127,15 +128,34 @@ export async function generateEBill(data, outputPath) {
 
     doc.moveTo(50, currentY + 20).lineTo(550, currentY + 20).stroke();
     doc.fontSize(10).fillColor('#666666')
-       .text('EkCycle Battery Recycling Solutions', 50, currentY + 30, { align: 'right', width: 500 })
+       .text('PunarChakar Battery Recycling Solutions', 50, currentY + 30, { align: 'right', width: 500 })
        .text('New Delhi, 122001, India', 50, currentY + 45, { align: 'right', width: 500 })
-       .text('Phone: +91 9876543210 | Email: info@ekcycle.com', 50, currentY + 60, { align: 'right', width: 500 })
-       .text('GSTIN: 22ABCDE1234F1Z2 | CIN: U74999HR2022PTC098765', 50, currentY + 75, { align: 'right', width: 500 });
+       .text('Phone: +91 9876543210 | Email: punarchakar@gmail.com', 50, currentY + 60, { align: 'right', width: 500 })
+    //    .text('GSTIN: 22ABCDE1234F1Z2 | CIN: U74999HR2022PTC098765', 50, currentY + 75, { align: 'right', width: 500 });
 
     doc.end();
 
-    // TODO return file properties and path
+    return {
+        fileName: path.basename(outputPath),
+        filePath: outputPath,
+        confirmationNumber: confirmationNumber
+    };
 }
+
+const generateConfirmationNumber = () => {
+  const now = new Date();
+
+  const pad = (num) => num.toString().padStart(2, '0');
+
+  const yy = now.getFullYear().toString().slice(-2);
+  const mm = pad(now.getMonth() + 1);     // Months are 0-based
+  const dd = pad(now.getDate());
+  const hh = pad(now.getHours());
+  const min = pad(now.getMinutes());
+  const ss = pad(now.getSeconds());
+
+  return `${yy}${mm}${dd}-${hh}${min}${ss}`;
+};
 
 // Sample Data for Battery Scrap
 const sampleBatteryScrap = {

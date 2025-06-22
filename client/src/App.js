@@ -2,9 +2,14 @@ import './App.css';
 import Home from './pages/home';
 import { Routes, Route } from 'react-router-dom';
 import MaterialPage from './components/materialPage/MaterialPage';
+import AdminPriceEditor from './components/admin/AdminPriceEditor';
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 
 const ProtectedMaterialPage = withAuthenticationRequired(MaterialPage, {
+  onRedirecting: () => <div>Loading...</div>,
+});
+
+const ProtectedAdminPage = withAuthenticationRequired(AdminPriceEditor, {
   onRedirecting: () => <div>Loading...</div>,
 });
 
@@ -18,6 +23,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/marketplace" element={<ProtectedMaterialPage />} />
+      <Route path="/admin-chakra-punar" element={<ProtectedAdminPage />} />
     </Routes>
   );
 }
