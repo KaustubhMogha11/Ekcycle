@@ -19,7 +19,7 @@ export async function sendInvoiceEmail(customerData, confirmationDetails) {
             from: '"PunarChakar" <punarchakar@gmail.com>',
             to: customerData.email,
             subject: `Your Order #${confirmationDetails?.confirmationNumber} - Order Confirmation`,
-            text: `Dear Valued Customer,\n\nThank you for your order! Your order has been successfully placed.\n\nPlease find attached order details for reference.\n\nOrder Details:\nMaterial Type: ${customerData.material}\nQuantity: ${customerData.quantity}\nTotal Amount: $${customerData?.totalPrice?.toFixed(2)}\n\nIf you have any questions, please contact our support team.\n\nBest regards,\nPunarChakar Team`,
+            text: `Dear Valued Customer,\n\nThank you for your order! Your order has been successfully placed.\n\nPlease find attached order details for reference.\n\nOrder Details:\nMaterial Type: ${customerData.material}\nQuantity: ${customerData.quantity}\nTotal Amount: Rs.${customerData?.totalPrice?.toFixed(2)}\n\nIf you have any questions, please contact our support team.\n\nBest regards,\nPunarChakar Team`,
             html: `
                     <div style="font-family: Arial, sans-serif; line-height: 1.6;">
                         <h2 style="color: #2e7d32;">Order Successfully Placed!</h2>
@@ -31,8 +31,8 @@ export async function sendInvoiceEmail(customerData, confirmationDetails) {
                         <ul>
                             <li><strong>Material Type:</strong> ${customerData?.material}</li>
                             <li><strong>Quantity:</strong> ${customerData?.quantity}</li>
-                            <li><strong>Total Amount:</strong> $${customerData?.totalPrice?.toFixed(2)}</li>
-                            <li><strong>Invoice Number:</strong> ${confirmationDetails?.confirmationNumber}</li>
+                            <li><strong>Total Amount:</strong> Rs.${customerData?.totalPrice?.toFixed(2)}</li>
+                            <li><strong>Order Number:</strong> ${confirmationDetails?.confirmationNumber}</li>
                         </ul>
                         
                         <p>If you have any questions, please contact our support team.</p>
@@ -57,7 +57,7 @@ export async function sendInvoiceEmail(customerData, confirmationDetails) {
         };
 
         await transporter.sendMail(mailOptions);
-        console.log(`Email sent to ${customerData.email} with invoice ${confirmationDetails.fileName}`);
+        console.log(`Email sent to ${customerData.email} with Order info: ${confirmationDetails.fileName}`);
         return true;
     } catch (error) {
         console.error('Error sending email:', error);

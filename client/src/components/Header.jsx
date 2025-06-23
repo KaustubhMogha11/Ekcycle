@@ -15,7 +15,9 @@ const Header = () => {
     <header className="header">
       <div className="top-bar">
         <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo-img" />
+          <a href="/">
+            <img src={logo} alt="Logo" className="logo-img" />
+          </a>
         </div>
 
         <div className="menu-toggle" onClick={toggleMenu}>
@@ -24,7 +26,7 @@ const Header = () => {
 
         <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
           <a href="/">Home</a>
-          <a href="/marketplace">Enquiry</a>
+          <a href="/enquire">Enquiry</a>
           <a href="#footer-section">Contact</a>
 
           {!isAuthenticated ? (

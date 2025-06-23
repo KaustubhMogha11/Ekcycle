@@ -17,13 +17,15 @@ const NavBar = () => {
     <motion.nav className="nav-bar">
       {/* Logo on the left */}
       <div className="logo-left">
-        <img src={logo} alt="Ekcycle Logo" />
+        <a href="/">
+          <img src={logo} alt="PunarChakar Logo" />
+        </a>
       </div>
 
       {/* Navigation links in the center */}
       <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
         <a href="/">Home</a>
-        <a href="/marketplace">Marketplace</a>
+        <a href="/enquire">Marketplace</a>
         <a href="/contact">Contact Us</a>
       </div>
 

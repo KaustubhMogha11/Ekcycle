@@ -7,7 +7,6 @@
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  padding-top: 40px;
   padding-bottom: 180px; /* make space for the wave */
 }
 
@@ -166,7 +165,6 @@ canvas#demo-canvas {
 /* Mobile View */
 @media (max-width: 768px) {
   .large-header {
-    padding-top: 30px;
     padding-bottom: 160px; /* enough room for wave */
   }
 
@@ -182,7 +180,6 @@ canvas#demo-canvas {
   .left-text {
     flex: unset;
     min-width: 100%;
-    padding: 0;
     text-align: center;
     animation: fadeInUp 1s ease-in-out;
   }
@@ -234,6 +231,7 @@ canvas#demo-canvas {
 }
 
 .mid-logo {
-  width: 70px;
-  height: auto;
+    width: 340px;
+    height: auto;
+    margin: auto;
 }

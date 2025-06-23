@@ -18,7 +18,7 @@
 }
 
 .logo-img {
-  width: 120px; /* Increased width */
+  width: 160px; /* Increased width */
   height: auto; /* Maintain aspect ratio */
   object-fit: contain;
 }

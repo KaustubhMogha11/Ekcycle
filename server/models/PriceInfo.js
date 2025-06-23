@@ -9,6 +9,8 @@ const priceInfoSchema = new mongoose.Schema({
   CoPayable: Number,
   NiMarketPrice: Number,
   NiPayable: Number,
+  batteryScrapPrice: Number,
+  blackMassPrice: Number,
   createdAt: { type: Date, default: Date.now }
 }, { timestamps: true });
 

@@ -3,7 +3,7 @@ import './midsection.css';
 import { Circ } from 'gsap/all';
 import { TweenLite } from 'gsap';
 import image from '../../images/yy.png';
-import logo from '../../images/pc.png';
+import logo from '../../images/punarchakarlogoBlack.png';
 
 const CanvasBackground = () => {
   useEffect(() => {
@@ -191,13 +191,12 @@ const MidSection = () => {
         <div className="left-text">
           <div className="logo-row">
             <img src={logo} alt="PunarChakar Logo" className="mid-logo" />
-            <h1 className="main-title">PunarChakar</h1>
           </div>
-          <h2 className="sub-title">From Scrap To Sustainability - Trace Every Step</h2>
+          {/* <h2 className="sub-title">From Scrap To Sustainability - Trace Every Step</h2> */}
           <p className="description">
             We power India’s battery circular economy with end-to-end traceability, compliance, and marketplace access. From tracking every scrap battery and black mass using digital identifiers to ensuring BWMR 2022 and EPR compliance, we offer real-time pricing for LFP, NMC, and LCO chemistries, verified by lab-tested certification. Our platform connects recyclers, manufacturers, OEMs, and metal buyers to a trusted ecosystem enabling smart buying, sustainable reuse, and transparency. With credit registries, scorecards, and verified networks, we turn recycling into a measurable, compliant, and profitable process bridging the gap between waste and value.
           </p>
-          <a href="/Marketplace" className="learn-more-btn">Learn More</a>
+          <a href="/enquire" className="learn-more-btn">Enquire Now</a>
         </div>
         <div className="right-image">
           <img src={image} alt="Battery Recycling Illustration" />

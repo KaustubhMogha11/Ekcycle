@@ -16,7 +16,6 @@ const MaterialPage = () => {
     company: '',
     mobile: '',
     email: user?.email || '',
-    otp: '',
     material: 'battery_scrap',
     battery_type: 'lco-s',
     second_life_type: 'lco-i',
@@ -157,11 +156,11 @@ useEffect(() => {
                       <input type="text" id="company" name="company" placeholder="Enter company name" value={formData.company} onChange={handleChange} />
                     </div>
                     <div>
-                      <label htmlFor="mobile">Mobile Number:</label>
+                      <label htmlFor="mobile">Mobile Number:<span className="required"> *</span></label>
                       <input type="number" id="mobile" name="mobile" placeholder="Enter mobile number" required value={formData.mobile} onChange={handleChange} />
                     </div>
                     <div className="full-width">
-                      <label htmlFor="email">Email Address:</label>
+                      <label htmlFor="email">Email Address:<span className="required"> *</span></label>
                       <input type="email" id="email" name="email" placeholder="Enter email address" required value={formData.email} onChange={handleChange} />
                     </div>
                   </div>
@@ -203,11 +202,11 @@ useEffect(() => {
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="voltage">Voltage (V):</label>
+                        <label htmlFor="voltage">Voltage (V):<span className="required"> *</span></label>
                         <input type="text" id="voltage" name="voltage" placeholder="Enter voltage" required value={formData.voltage} onChange={handleChange} />
                       </div>
                       <div>
-                        <label htmlFor="capacity">Capacity (Ah):</label>
+                        <label htmlFor="capacity">Capacity (Ah):<span className="required"> *</span></label>
                         <input type="text" id="capacity" name="capacity" placeholder="Enter capacity" required value={formData.capacity} onChange={handleChange} />
                       </div>
                     </div>
@@ -224,23 +223,23 @@ useEffect(() => {
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="li-percent">Li (%)</label>
+                        <label htmlFor="li-percent">Li (%)<span className="required"> *</span></label>
                         <input type="number" id="li-percent" name="li_percent" placeholder="Enter Li percentage" required value={formData.li_percent} onChange={handleChange} />
                       </div>
                       <div>
-                        <label htmlFor="co-percent">Co (%)</label>
+                        <label htmlFor="co-percent">Co (%)<span className="required"> *</span></label>
                         <input type="number" id="co-percent" name="co_percent" placeholder="Enter Co percentage" required value={formData.co_percent} onChange={handleChange} />
                       </div>
                       <div>
-                        <label htmlFor="ni-percent">Ni (%)</label>
+                        <label htmlFor="ni-percent">Ni (%)<span className="required"> *</span></label>
                         <input type="number" id="ni-percent" name="ni_percent" placeholder="Enter Ni percentage" required value={formData.ni_percent} onChange={handleChange} />
                       </div>
                       <div>
-                        <label htmlFor="cu-percent">Cu (%)</label>
+                        <label htmlFor="cu-percent">Cu (%)<span className="required"> *</span></label>
                         <input type="number" id="cu-percent" name="cu_percent" placeholder="Enter Cu percentage" required value={formData.cu_percent} onChange={handleChange} />
                       </div>
                       <div>
-                        <label htmlFor="moisture">Moisture (%)</label>
+                        <label htmlFor="moisture">Moisture (%)<span className="required"> *</span></label>
                         <input type="number" id="moisture" name="moisture" placeholder="Enter moisture percentage" required value={formData.moisture} onChange={handleChange} />
                       </div>
                     </div>

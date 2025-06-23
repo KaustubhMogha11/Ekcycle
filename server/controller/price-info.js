@@ -11,7 +11,9 @@ export const createOrUpdatePriceInfo = async (req, res) => {
       CoMarketPrice,
       CoPayable,
       NiMarketPrice,
-      NiPayable
+      NiPayable,
+      batteryScrapPrice,
+      blackMassPrice
     } = req.body;
 
     // Validate required fields
@@ -23,7 +25,9 @@ export const createOrUpdatePriceInfo = async (req, res) => {
       CoMarketPrice === undefined ||
       CoPayable === undefined ||
       NiMarketPrice === undefined ||
-      NiPayable === undefined
+      NiPayable === undefined ||
+      batteryScrapPrice === undefined ||
+      blackMassPrice === undefined
     ) {
       return res.status(400).json({
         success: false,
@@ -43,6 +47,8 @@ export const createOrUpdatePriceInfo = async (req, res) => {
         CoPayable,
         NiMarketPrice,
         NiPayable,
+        batteryScrapPrice,
+        blackMassPrice,
         updatedAt: new Date()
       },
       {
