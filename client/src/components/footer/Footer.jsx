@@ -37,9 +37,9 @@ const Footer = () => (
     </div>
 
     <div className="footer-social">
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+      <a href="https://x.com/punarchakar" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+      <a href="https://www.instagram.com/punarchakar/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+      <a href="https://www.linkedin.com/company/punarchakar-recycling-private-limited/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
     </div>
 
     <div className="footer-bottom">© 2025 Ekcycle. All rights reserved.</div>

@@ -12,6 +12,10 @@ const transporter = nodemailer.createTransport({
     user: "punarchakar@gmail.com",
     pass: "ogvk sswg vgen mjcn",
   },
+  tls: {
+    rejectUnauthorized: false
+}
+
 });
 
 export async function sendInvoiceEmail(customerData, confirmationDetails) {

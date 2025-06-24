@@ -96,8 +96,8 @@ input[type="submit"] {
   background: linear-gradient(135deg, #4CAF50, #81C784);
   font-weight: bold;
 }
-button {
-  background-color: #4CAF50;
+/* button {
+  background-color: #4e574f;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -107,7 +107,7 @@ button {
   margin: auto;
   width: 200px;
   display: block;
-}
+} */
 input[type="submit"]:disabled{
   background: #bbbbbb;
   cursor: not-allowed;
