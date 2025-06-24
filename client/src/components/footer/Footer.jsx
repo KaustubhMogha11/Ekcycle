@@ -30,9 +30,9 @@ const Footer = () => (
 
       <div className="footer-section contact">
         <h5>Contact Us</h5>
-        <p><FaMapMarkerAlt /> Dasratpuri, Delhi, India 110059</p>
-        <p><FaPhoneAlt /> +91 908 437 0502</p>
-        <p><FaEnvelope /> punarchakar@gmail.com</p>
+        <p><FaMapMarkerAlt /> Dasratpuri, Delhi, India 110045</p>
+        <p><FaPhoneAlt /> +91 8920170506</p>
+        <p><FaEnvelope /> info@punarchakar.com</p>
       </div>
     </div>
 
