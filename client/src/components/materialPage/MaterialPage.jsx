@@ -37,7 +37,7 @@ const MaterialPage = () => {
   useEffect(() => {
     const fetchInitialPriceInfo = async () => {
       try {
-        const response = await fetch('http://localhost:8000/price-info');
+        const response = await fetch(`${window.config.apiBaseUrl}/price-info`);
         if (!response.ok) throw new Error('Failed to fetch price info');
         const data = await response.json();
 
@@ -141,7 +141,7 @@ const handleChange = (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/confirm-details', {
+      const response = await fetch(`${window.config.apiBaseUrl}/confirm-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -256,7 +256,7 @@ const handleChange = (e) => {
                         <select id="blackmass-type" name="blackmass_type" value={formData.blackmass_type} onChange={handleChange}>
                           <option value="LCO-B">LCO-B</option>
                           <option value="NMC-B">NMC-B</option>
-                          <option value="LFP-B">LFP-B</option>
+                          {/* <option value="LFP-B">LFP-B</option> */}
                         </select>
                       </div>
                       <div>

@@ -8,7 +8,7 @@ const PricingSection = () => {
   useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const res = await fetch('http://localhost:8000/price-info');
+        const res = await fetch(`${window.config.apiBaseUrl}/price-info`);
         const json = await res.json();
         if (json.success) {
           const data = json.data;

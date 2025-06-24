@@ -33,7 +33,7 @@ const AdminPriceEditor = () => {
   useEffect(() => {
     const fetchPriceInfo = async () => {
       try {
-        const response = await fetch('http://localhost:8000/price-info');
+        const response = await fetch(`${window.config.apiBaseUrl}/price-info`);
         const result = await response.json();
         if (result.success) {
           const filtered = {};
@@ -66,7 +66,7 @@ const AdminPriceEditor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/price-info', {
+      const response = await fetch(`${window.config.apiBaseUrl}/price-info`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(priceData)

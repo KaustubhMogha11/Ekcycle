@@ -35,7 +35,9 @@ const Header = () => {
               className="nav-link"
               onClick={(e) => {
                 e.preventDefault();
-                loginWithRedirect();
+                loginWithRedirect({
+                  redirectUri: window.location.origin
+                });
               }}
             >
               Login
