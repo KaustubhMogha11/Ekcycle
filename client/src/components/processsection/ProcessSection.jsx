@@ -42,6 +42,13 @@ const ProcessSection = () => {
                 </div>
                 <h3 className="process-title">{process.title}</h3>
                 <p className="process-subtitle">{process.subtitle}</p>
+                {process.link ? (
+                  <a href={process.link} target="_blank" rel="noopener noreferrer">
+                    <button className="schedule-button front-button">{process.button}</button>
+                  </a>
+                ) : (
+                  <button className="schedule-button front-button">{process.button}</button>
+                )}
               </div>
               <div className="card-back">
                 <p className="process-description">{process.description}</p>
