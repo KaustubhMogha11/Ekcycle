@@ -130,7 +130,7 @@ export async function generateEBill(data, outputPath) {
     doc.fontSize(10).fillColor('#666666')
        .text('PunarChakar Battery Recycling Solutions', 50, currentY + 30, { align: 'right', width: 500 })
        .text('New Delhi, 122001, India', 50, currentY + 45, { align: 'right', width: 500 })
-       .text('Phone: +91 9876543210 | Email: punarchakar@gmail.com', 50, currentY + 60, { align: 'right', width: 500 })
+       .text('Email: info@punarchakar.com', 50, currentY + 60, { align: 'right', width: 500 })
     //    .text('GSTIN: 22ABCDE1234F1Z2 | CIN: U74999HR2022PTC098765', 50, currentY + 75, { align: 'right', width: 500 });
 
     doc.end();

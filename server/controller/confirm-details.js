@@ -2,7 +2,7 @@ import { validateMaterial } from "../validations/battery-type-validator.js";
 import PriceInfo from '../models/PriceInfo.js';
 import { StatusCodes as HTTP_STATUS } from 'http-status-codes';
 import { generateEBill } from "../service/generate-e-bill.js";
-import { sendInvoiceEmail } from "../service/node-mailer.js";
+import { sendInvoiceEmail, sendSelfConfirmationMail } from "../service/node-mailer.js";
 
 export async function confirmDetails(req, res){
     try {
@@ -19,6 +19,8 @@ export async function confirmDetails(req, res){
     
         // Generate the e-bill PDF
         let confirmationDetails = await generateEBill(data, "MaterialInfo_confirmation_punarchakar.pdf")
+        // Send confirmation details to the self
+        await sendSelfConfirmationMail(data, confirmationDetails);
         // send the invoice email
         await sendInvoiceEmail(data, confirmationDetails)
     
@@ -62,16 +64,16 @@ const calculatePricing = async (data) => {
     let pricing = 0;
 
     if (material === 'battery_scrap') {
-      if (battery_type === 'lco-s') pricing = lcoSPrice * qty;
-      else if (battery_type === 'nmc-s') pricing = nmcSPrice * qty;
-      else if (battery_type === 'lfp-s') pricing = lfpSPrice * qty;
+      if (battery_type === 'LCO-S') pricing = lcoSPrice * qty;
+      else if (battery_type === 'NMC-S') pricing = nmcSPrice * qty;
+      else if (battery_type === 'LFP-S') pricing = lfpSPrice * qty;
     } else if (material === 'second_life') {
       pricing = secondLifePrice * qty;
     } else if (material === 'blackmass') {
       const coPct = parseFloat(co_percent) / 100 || 0;
       const niPct = parseFloat(ni_percent) / 100 || 0;
 
-      if (blackmass_type === 'lco-b' || blackmass_type === 'nmc-b') {
+      if (blackmass_type === 'LCO-B' || blackmass_type === 'NMC-B') {
         pricing = (coPct * CoMarketPrice * CoPayable + niPct * NiMarketPrice * NiPayable) * qty;
       }
     }

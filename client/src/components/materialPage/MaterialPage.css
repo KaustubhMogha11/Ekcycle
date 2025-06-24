@@ -67,7 +67,7 @@ textarea {
 }
 
 .form-section {
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .form-section h2 {
@@ -95,6 +95,22 @@ label {
 input[type="submit"] {
   background: linear-gradient(135deg, #4CAF50, #81C784);
   font-weight: bold;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: auto;
+  width: 200px;
+  display: block;
+}
+input[type="submit"]:disabled{
+  background: #bbbbbb;
+  cursor: not-allowed;
 }
 
 /* ===============================

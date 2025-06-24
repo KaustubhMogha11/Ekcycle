@@ -11,15 +11,15 @@ const baseSchema = Joi.object({
 
 const schemas = {
     battery_scrap: baseSchema.keys({
-        battery_type: Joi.string().valid('lco-s', 'nmc-s', 'lfp-s').required()
+        battery_type: Joi.string().valid('LCO-S', 'NMC-S', 'LFP-S').required()
     }),
     second_life: baseSchema.keys({
-        second_life_type: Joi.string().valid('lco-i', 'nmc-i', 'lfp-i').required(),
+        second_life_type: Joi.string().valid('LCO-I', 'NMC-I', 'LFP-I').required(),
         voltage: Joi.number().positive().required(),
         capacity: Joi.number().positive().required()
     }),
     blackmass: baseSchema.keys({
-        blackmass_type: Joi.string().valid('lco-b', 'nmc-b', 'lfp-b').required(),
+        blackmass_type: Joi.string().valid('LCO-B', 'NMC-B', 'LFP-B').required(),
         li_percent: Joi.number().min(0).max(100).required(),
         co_percent: Joi.number().min(0).max(100).required(),
         ni_percent: Joi.number().min(0).max(100).required(),

@@ -9,6 +9,7 @@ window.fetchedPricingInfo = null; // Global variable to store fetched pricing in
 
 const MaterialPage = () => {
   const { user } = useAuth0();
+  
 
   const [loading, setLoading] = useState(true);
 
@@ -17,11 +18,11 @@ const MaterialPage = () => {
     mobile: '',
     email: user?.email || '',
     material: 'battery_scrap',
-    battery_type: 'lco-s',
-    second_life_type: 'lco-i',
+    battery_type: 'LCO-S',
+    second_life_type: 'LCO-I',
     voltage: '',
     capacity: '',
-    blackmass_type: 'lco-b',
+    blackmass_type: 'LCO-B',
     li_percent: '',
     co_percent: '',
     ni_percent: '',
@@ -46,6 +47,18 @@ const MaterialPage = () => {
 
       } catch (error) {
         console.error('Error fetching price info:', error);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Error Fetching price info. Please try again later.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          showConfirmButton: true,
+        }).then((response) => {
+          if (response.isConfirmed || response.isDismissed) {
+            window.location.href = '/'; // Redirect no matter how alert is closed
+          }
+        });
+
       } finally {
         setLoading(false);
       }
@@ -68,13 +81,35 @@ useEffect(() => {
   formData.quantity
 ]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  if (name === 'material') {
+    // Reset dependent fields on material change
+    setFormData(prev => ({
+      ...prev,
+      material: value,
+      battery_type: 'LCO-S',
+      second_life_type: 'LCO-I',
+      blackmass_type: 'LCO-B',
+      voltage: '',
+      capacity: '',
+      li_percent: '',
+      co_percent: '',
+      ni_percent: '',
+      cu_percent: '',
+      quantity: '',
+      moisture: '',
+      pricing: '' // optional: reset pricing when material changes
+    }));
+  } else {
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-  };
+    calculatePricing();
+  }
+};
 
   const calculatePricing = () => {
     const { material, quantity, battery_type, second_life_type, blackmass_type, co_percent, ni_percent } = formData;
@@ -83,15 +118,15 @@ useEffect(() => {
     const qty = parseFloat(quantity) || 0;
 
     if (material === 'battery_scrap' && qty > 0) {
-      if (battery_type === 'lco-s') pricing = lcoSPrice * qty;
-      else if (battery_type === 'nmc-s') pricing = nmcSPrice * qty;
-      else if (battery_type === 'lfp-s') pricing = lfpSPrice * qty;
+      if (battery_type === 'LCO-S') pricing = lcoSPrice * qty;
+      else if (battery_type === 'NMC-S') pricing = nmcSPrice * qty;
+      else if (battery_type === 'LFP-S') pricing = lfpSPrice * qty;
     } else if (material === 'second_life' && qty > 0) {
       pricing = secondLifePrice * qty;
     } else if (material === 'blackmass' && qty > 0) {
       const coPct = parseFloat(co_percent) / 100 || 0;
       const niPct = parseFloat(ni_percent) / 100 || 0;
-      if (blackmass_type === 'lco-b' || blackmass_type === 'nmc-b') {
+      if (blackmass_type === 'LCO-B' || blackmass_type === 'NMC-B') {
         pricing = (coPct * CoMarketPrice * CoPayable + niPct * NiMarketPrice * NiPayable) * qty;
       }
     }
@@ -104,7 +139,7 @@ useEffect(() => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch('http://localhost:8000/confirm-details', {
         method: 'POST',
@@ -133,6 +168,8 @@ useEffect(() => {
         icon: 'error',
         confirmButtonText: 'OK'
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -142,7 +179,7 @@ useEffect(() => {
       <div className="marketplace-container">
         <div className="container">
           {loading ? (
-            <p>Loading pricing info...</p>
+            <p>Loading...</p>
           ) : (
             <>
               <h1>Material Registration and Pricing</h1>
@@ -157,7 +194,7 @@ useEffect(() => {
                     </div>
                     <div>
                       <label htmlFor="mobile">Mobile Number:<span className="required"> *</span></label>
-                      <input type="number" id="mobile" name="mobile" placeholder="Enter mobile number" required value={formData.mobile} onChange={handleChange} />
+                      <input type="text" id="mobile" name="mobile" placeholder="Enter mobile number" required value={formData.mobile} onChange={handleChange} maxLength="10" pattern="\d{10}" title="Mobile number must be exactly 10 digits" />
                     </div>
                     <div className="full-width">
                       <label htmlFor="email">Email Address:<span className="required"> *</span></label>
@@ -183,9 +220,9 @@ useEffect(() => {
                       <div>
                         <label htmlFor="battery-type">Battery Scrap Type:</label>
                         <select id="battery-type" name="battery_type" value={formData.battery_type} onChange={handleChange}>
-                          <option value="lco-s">LCO-S</option>
-                          <option value="nmc-s">NMC-S</option>
-                          <option value="lfp-s">LFP-S</option>
+                          <option value="LCO-S">LCO-S</option>
+                          <option value="NMC-S">NMC-S</option>
+                          <option value="LFP-S">LFP-S</option>
                         </select>
                       </div>
                     </div>
@@ -196,9 +233,9 @@ useEffect(() => {
                       <div>
                         <label htmlFor="second-life-type">2nd Life Battery Type:</label>
                         <select id="second-life-type" name="second_life_type" value={formData.second_life_type} onChange={handleChange}>
-                          <option value="lco-i">LCO-I</option>
-                          <option value="nmc-i">NMC-I</option>
-                          <option value="lfp-i">LFP-I</option>
+                          <option value="LCO-I">LCO-I</option>
+                          <option value="NMC-I">NMC-I</option>
+                          <option value="LFP-I">LFP-I</option>
                         </select>
                       </div>
                       <div>
@@ -217,9 +254,9 @@ useEffect(() => {
                       <div>
                         <label htmlFor="blackmass-type">Blackmass Type:</label>
                         <select id="blackmass-type" name="blackmass_type" value={formData.blackmass_type} onChange={handleChange}>
-                          <option value="lco-b">LCO-B</option>
-                          <option value="nmc-b">NMC-B</option>
-                          <option value="lfp-b">LFP-B</option>
+                          <option value="LCO-B">LCO-B</option>
+                          <option value="NMC-B">NMC-B</option>
+                          <option value="LFP-B">LFP-B</option>
                         </select>
                       </div>
                       <div>
@@ -269,8 +306,15 @@ useEffect(() => {
                     <textarea id="enquiry" name="enquiry" rows="5" placeholder="Enter your enquiry" value={formData.enquiry} onChange={handleChange}></textarea>
                   </div>
                 </div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  disabled={!formData.pricing || parseFloat(formData.pricing) <= 0}
+                />
 
-                <input type="submit" value="Submit" />
+                {/* <button type="button" id='submitFormBtn' onClick={handleSubmit} disabled={!formData.pricing}>
+                  Submit
+                </button> */}
               </form>
             </>
           )}
