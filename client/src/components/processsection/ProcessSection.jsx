@@ -31,7 +31,7 @@ const processes = [
 const ProcessSection = () => {
   return (
     <section className="process-section">
-      <h2 className="process-heading">Our Process</h2>
+      <h2 className="process-heading">Our Services</h2>
       <div className="process-cards">
         {processes.map((process, idx) => (
           <div className="process-card" key={idx}>
