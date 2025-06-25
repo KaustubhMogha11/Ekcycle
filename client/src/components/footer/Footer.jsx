@@ -29,12 +29,12 @@ const Footer = () => (
     </Link>
   </li>
   <li>
-    <Link to="/enquire" style={{ textDecoration: 'none', color: 'inherit' }}>
-      <FaStore /> Enquiry
+    <Link to="/purchase" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <FaStore /> Purchase
     </Link>
   </li>
   <li>
-    <Link to="/enquire" style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link to="https://forms.gle/4VdiyVcA1ttNVGc29" style={{ textDecoration: 'none', color: 'inherit' }}>
       <FaCalendarAlt /> Schedule
     </Link>
   </li>

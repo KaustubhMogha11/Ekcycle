@@ -196,7 +196,7 @@ const MidSection = () => {
           <p className="description">
             We power India’s battery circular economy with end-to-end traceability, compliance, and marketplace access. From tracking every scrap battery and black mass using digital identifiers to ensuring BWMR 2022 and EPR compliance, we offer real-time pricing for LFP, NMC, and LCO chemistries, verified by lab-tested certification. Our platform connects recyclers, manufacturers, OEMs, and metal buyers to a trusted ecosystem enabling smart buying, sustainable reuse, and transparency. With credit registries, scorecards, and verified networks, we turn recycling into a measurable, compliant, and profitable process bridging the gap between waste and value.
           </p>
-          <a href="/enquire" className="learn-more-btn">Enquire Now</a>
+          <a href="/purchase" className="learn-more-btn">Enquire Now</a>
         </div>
         <div className="right-image">
           <img src={image} alt="Battery Recycling Illustration" />

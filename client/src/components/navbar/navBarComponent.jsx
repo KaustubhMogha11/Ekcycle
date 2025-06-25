@@ -25,7 +25,7 @@ const NavBar = () => {
       {/* Navigation links in the center */}
       <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
         <a href="/">Home</a>
-        <a href="/enquire">Marketplace</a>
+        <a href="/purchase">Marketplace</a>
         <a href="/contact">Contact Us</a>
       </div>
 
