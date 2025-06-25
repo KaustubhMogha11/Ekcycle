@@ -42,7 +42,7 @@ const Footer = () => (
       <a href="https://www.linkedin.com/company/punarchakar-recycling-private-limited/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
     </div>
 
-    <div className="footer-bottom">© 2025 Ekcycle. All rights reserved.</div>
+    <div className="footer-bottom">© 2025 PunarChakar. All rights reserved.</div>
   </footer>
 );
 

@@ -83,8 +83,13 @@ useEffect(() => {
 
 const handleChange = (e) => {
   const { name, value } = e.target;
-
+  
   if (name === 'material') {
+    if(value === 'battery_scrap' || value === 'blackmass') {
+      document.getElementById('quantity-unit').innerText = ' (kg)';
+    }else{
+      document.getElementById('quantity-unit').innerText = ' (pcs)';
+    }
     // Reset dependent fields on material change
     setFormData(prev => ({
       ...prev,
@@ -288,7 +293,7 @@ const handleChange = (e) => {
                   <h2>Quantity and Pricing</h2>
                   <div className="form-grid">
                     <div>
-                      <label htmlFor="quantity">Quantity:</label>
+                      <label htmlFor="quantity">Quantity:<span id='quantity-unit'> (kg)</span></label>
                       <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required value={formData.quantity} onChange={handleChange} min="1" />
                     </div>
                     <div>

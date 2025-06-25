@@ -7,6 +7,7 @@
   margin: 2rem auto;
   animation: fadeIn 0.7s ease-in;
   backdrop-filter: blur(6px);
+  width: 90%;
 }
 
 .section-title {
@@ -35,6 +36,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-bottom: 1.2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-wrap: wrap;
 }
 
 .metal-price-item:hover {
@@ -45,6 +47,8 @@
 .metal-price-left {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 150px;
 }
 
 .metal-name {
@@ -68,6 +72,7 @@
   background: #f0fdf4;
   padding: 0.3rem 0.6rem;
   border-radius: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .metal-change.up {
@@ -89,5 +94,42 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* -----------------------
+   Responsive Design
+-------------------------- */
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .metal-prices-section {
+    padding: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .metal-price-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .metal-change {
+    align-self: flex-end;
+    margin-top: 0.6rem;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 768px) {
+  .metal-prices-section {
+    width: 95%;
+  }
+
+  .metal-price-item {
+    flex-wrap: wrap;
   }
 }
