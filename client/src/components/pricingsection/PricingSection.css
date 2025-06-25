@@ -1,3 +1,4 @@
+/* Base styles remain the same */
 .pricing-section {
   background: #e0f7f4;
   padding: 2rem;
@@ -73,18 +74,26 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --------------- RESPONSIVE DESIGN --------------- */
+/* --------- RESPONSIVE BREAKPOINTS --------- */
 
-/* Tablets and below */
-@media (max-width: 768px) {
+/* Large tablets and small laptops (landscape tablets like iPad Pro) */
+@media (max-width: 1024px) {
   .pricing-section {
-    padding: 1.5rem 1rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
+  .price-name,
+  .price-rate {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets (portrait iPad, Android tablets) */
+@media (max-width: 834px) {
   .price-item {
     flex-direction: column;
     align-items: flex-start;
@@ -98,13 +107,28 @@
   }
 
   .price-rate {
-    align-self: flex-end;
-    width: 100%;
     text-align: right;
+    width: 100%;
   }
 }
 
-/* Small mobile devices */
+/* Small tablets and landscape phones */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .price-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-rate {
+    text-align: left;
+  }
+}
+
+/* Phones */
 @media (max-width: 480px) {
   .section-title {
     font-size: 1.3rem;
@@ -116,15 +140,5 @@
 
   .price-rate {
     font-size: 1rem;
-  }
-
-  .price-left {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .price-rate {
-    text-align: left;
-    width: 100%;
   }
 }
