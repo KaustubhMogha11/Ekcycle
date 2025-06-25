@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   FaMapMarkerAlt, FaPhoneAlt, FaEnvelope,
   FaRocket, FaStore, FaCalendarAlt,
@@ -22,10 +23,22 @@ const Footer = () => (
       <div className="footer-section links">
         <h5>Quick Links</h5>
         <ul>
-          <li><FaRocket /> Dashboard</li>
-          <li><FaStore /> Enquiry</li>
-          <li><FaCalendarAlt /> Schedule</li>
-        </ul>
+  <li>
+    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <FaRocket /> Dashboard
+    </Link>
+  </li>
+  <li>
+    <Link to="/enquire" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <FaStore /> Enquiry
+    </Link>
+  </li>
+  <li>
+    <Link to="/enquire" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <FaCalendarAlt /> Schedule
+    </Link>
+  </li>
+</ul>
       </div>
 
       <div className="footer-section contact">
