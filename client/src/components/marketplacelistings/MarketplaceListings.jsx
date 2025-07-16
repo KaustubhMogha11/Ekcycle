@@ -7,32 +7,32 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const listings = [
   {
-    title: "Processed Black Mass - Ready for Refining",
-    details: "350 kg - 327.5 ₹/kg",
+    title: "Processed LCO Black Mass - Ready for Refining",
+    details: "₹350/kg - ₹540/kg",
     location: "Connaught Place, Delhi",
     status: "Verified"
   },
   {
-    title: "Second-Life EV Batteries - 80% Capacity",
-    details: "10 units - 4500.0 ₹/unit",
+    title: "Second-Life NMC EV Batteries - 80% Capacity",
+    details: "₹41/pcs",
     location: "Saket, Delhi",
     status: "Verified"
   },
   {
     title: "Mixed Battery Scrap - Consumer Electronics",
-    details: "750 kg - 122.5 ₹/kg",
+    details: "₹70/kg",
     location: "Lajpat Nagar, Delhi",
     status: "Pending"
   },
   {
     title: "Industrial Lead-Acid Scrap - Bulk",
-    details: "1 ton - 105.0 ₹/kg",
+    details: "₹105/kg",
     location: "Okhla, Delhi",
     status: "Verified"
   },
   {
-    title: "Lithium-ion Packs (Defective)",
-    details: "60 packs - 225.0 ₹/pack",
+    title: "Lithium-ion LFP Cell (Defective)",
+    details:"100Ah - ₹800/pcs",
     location: "Dwarka, Delhi",
     status: "Pending"
   }

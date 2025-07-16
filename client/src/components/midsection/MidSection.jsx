@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import './midsection.css';
 import { Circ } from 'gsap/all';
 import { TweenLite } from 'gsap';
-import { motion } from 'framer-motion';
+import image from '../../images/yy.png';
+import logo from '../../images/punarchakarlogoBlack.png';
 
 const CanvasBackground = () => {
   useEffect(() => {
@@ -57,7 +58,7 @@ const CanvasBackground = () => {
       }
 
       for (let i in points) {
-        let c = new Circle(points[i], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
+        let c = new Circle(points[i], 2 + Math.random() * 2, 'rgba(0,0,0,0.3)');
         points[i].circle = c;
       }
 
@@ -74,14 +75,28 @@ const CanvasBackground = () => {
     }
 
     function mouseMove(e) {
-      let posx = e.pageX || e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-      let posy = e.pageY || e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-      target.x = posx;
-      target.y = posy;
+      target.x = e.clientX;
+      target.y = e.clientY;
     }
 
     function scrollCheck() {
-      animateHeader = document.body.scrollTop <= height;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollFactor = Math.min(1, scrollTop / height);
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        const dx = p.originX - width / 2;
+        const dy = p.originY - height / 2;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx);
+        const maxRadius = Math.min(width, height) / 2.2;
+        const r = scrollFactor * maxRadius;
+
+        p.x = width / 2 + Math.cos(angle) * distance * (1 - scrollFactor) + Math.cos(angle) * r * scrollFactor;
+        p.y = height / 2 + Math.sin(angle) * distance * (1 - scrollFactor) + Math.sin(angle) * r * scrollFactor;
+      }
+
+      animateHeader = scrollTop <= height;
     }
 
     function resize() {
@@ -140,7 +155,7 @@ const CanvasBackground = () => {
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p.closest[i].x, p.closest[i].y);
-        ctx.strokeStyle = 'rgba(156,217,249,' + p.active + ')';
+        ctx.strokeStyle = 'rgba(0,0,0,' + p.active + ')';
         ctx.stroke();
       }
     }
@@ -149,12 +164,11 @@ const CanvasBackground = () => {
       this.pos = pos;
       this.radius = rad;
       this.color = color;
-
       this.draw = function () {
         if (!this.active) return;
         ctx.beginPath();
         ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'rgba(156,217,249,' + this.active + ')';
+        ctx.fillStyle = 'rgba(0,0,0,' + this.active + ')';
         ctx.fill();
       };
     }
@@ -171,12 +185,24 @@ const CanvasBackground = () => {
 
 const MidSection = () => {
   return (
-      <div id="large-header" className="large-header">
-        <CanvasBackground />
-        <h1 className="main-title">
-          Recycle <span className="thin">Batteries</span>
-        </h1>
+    <div id="large-header" className="large-header">
+      <CanvasBackground />
+      <div className="overlay-content">
+        <div className="left-text">
+          <div className="logo-row">
+            <img src={logo} alt="PunarChakar Logo" className="mid-logo" />
+          </div>
+          {/* <h2 className="sub-title">From Scrap To Sustainability - Trace Every Step</h2> */}
+          <p className="description">
+            We power India’s battery circular economy with end-to-end traceability, compliance, and marketplace access. From tracking every scrap battery and black mass using digital identifiers to ensuring BWMR 2022 and EPR compliance, we offer real-time pricing for LFP, NMC, and LCO chemistries, verified by lab-tested certification. Our platform connects recyclers, manufacturers, OEMs, and metal buyers to a trusted ecosystem enabling smart buying, sustainable reuse, and transparency. With credit registries, scorecards, and verified networks, we turn recycling into a measurable, compliant, and profitable process bridging the gap between waste and value.
+          </p>
+          <a href="/purchase" className="learn-more-btn">Purchase Now</a>
+        </div>
+        <div className="right-image">
+          <img src={image} alt="Battery Recycling Illustration" />
+        </div>
       </div>
+    </div>
   );
 };
 

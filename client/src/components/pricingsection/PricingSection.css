@@ -1,3 +1,4 @@
+/* Base styles remain the same */
 .pricing-section {
   background: #e0f7f4;
   padding: 2rem;
@@ -34,6 +35,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   margin-bottom: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-wrap: wrap;
 }
 
 .price-item:hover {
@@ -46,6 +48,7 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  min-width: 150px;
 }
 
 .price-icon {
@@ -71,20 +74,30 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
+/* --------- RESPONSIVE BREAKPOINTS --------- */
+
+/* Large tablets and small laptops (landscape tablets like iPad Pro) */
+@media (max-width: 1024px) {
   .pricing-section {
-    padding: 1.5rem 1rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
+  .price-name,
+  .price-rate {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets (portrait iPad, Android tablets) */
+@media (max-width: 834px) {
   .price-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
 
   .price-left {
@@ -94,10 +107,28 @@
   }
 
   .price-rate {
-    align-self: flex-end;
+    text-align: right;
+    width: 100%;
   }
 }
 
+/* Small tablets and landscape phones */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .price-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-rate {
+    text-align: left;
+  }
+}
+
+/* Phones */
 @media (max-width: 480px) {
   .section-title {
     font-size: 1.3rem;
